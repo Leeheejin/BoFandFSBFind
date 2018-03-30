@@ -132,7 +132,7 @@ int main(int argc, char *argv[], char *envp[])
 	while(1)
 	{
 		print_menu();
-		scanf("%d",&choice);
+		scanf("%1d",&choice); // 의도하지 않은 입력을 방지하기 위해서 입력을 %1d로 제한합니다.
 		switch(choice)
 		{
 			case 1:
