@@ -39,16 +39,16 @@ void delete()
 	puts("= Agree?(y/n)               =");
 	puts("=============================");
 	fflush(stdin);
-	scanf("%1s",&is_agree); // 온전히 'y'의 값만 받아서 판별이 가능하도록 %c 에서 %1s로 바꿉니다.
-	while(getchar() != '\n') {getchar();} // 올바른 명령어 입력이 아닌 많은 수의 문자열등이 들어올 경우에 입력을 올바르게 제어하기 위해서 입력 버퍼를 비우도록 허위입력을 받습니다.
+	scanf("%1s",&is_agree); // 온전히 'y'의 값만 받아서 판별이 가능하도록 %c 에서 %1s로 변환명세를 바꿉니다.
+	while(getchar() != '\n') {getchar();} // 올바른 명령어 입력이 아닌 많은 수의 문자열등이 들어올 경우에 입력을 올바르게 제어하기 위해서 입력 버퍼를 비우도록 설정합니다.
 
 	switch(is_agree)
 	{
 		case 'y':
 			printf("select paper number : ");
 			fflush(stdout);
-			scanf("%1d",&num); // 온전한 값을 입력받기 위해서 입력을 %d %1d로 바꿉니다.
-			while(getchar() != '\n') {getchar();} // 올바른 명령어 입력이 아닌 많은 수의 문자열등이 들어올 경우에 입력을 올바르게 제어하기 위해서 입력 버퍼를 비우도록 허위입력을 받습니다.
+			scanf("%1d",&num); // 변환명세를 수정합니다. %d %1d로 바꿉니다.
+			while(getchar() != '\n') {getchar();} // 올바른 명령어 입력이 아닌 많은 수의 문자열등이 들어올 경우에 입력을 올바르게 제어하기 위해서 입력 버퍼를 비우도록 설정합니다.
 			if(num < 1 || num > idx)
 			{
 				printf("You are hacker :( byebye\n");
@@ -62,7 +62,7 @@ void delete()
 			printf("======================\n");
 			printf("[DELETE] Are you sure?(y/n)");
 			scanf("%1s",&is_agree); // 온전히 'y'의 값만 받아서 판별이 가능하도록 %c 에서 %1s로 바꿉니다.
-			while(getchar() != '\n') {getchar();} // 올바른 명령어 입력이 아닌 많은 수의 문자열등이 들어올 경우에 입력을 올바르게 제어하기 위해서 입력 버퍼를 비우도록 허위입력을 받습니다.
+			while(getchar() != '\n') {getchar();} // 올바른 명령어 입력이 아닌 많은 수의 문자열등이 들어올 경우에 입력을 올바르게 제어하기 위해서 입력 버퍼를 비우도록 설정합니다.
 			if(is_agree == 'y')
 			{
 				for(int j=0;j<PAPER_Y;j++)
