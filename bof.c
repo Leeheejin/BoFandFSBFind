@@ -86,7 +86,7 @@ void license()
 	puts("########################################");
 	printf("Do you agree\?\?(yes/no)");
 	fflush(stdout);
-	fgets(buf,sizeof(buf)-1,stdin); // 입력받을 공간 크기를 256에서 sizeof(buf)-1 으로 제한합니다.
+	fgets(buf,sizeof(buf)-1,stdin); // 입력받을 공간 크기를 256에서 sizeof(buf)-1 으로 제한합니다. 입력받을 할당한 공간만큼 제대로 지정해 주지 않고, 입력값을 제어해 주지 않는다면 버퍼오버플로우가 일어날 수 있습니다.
 	
 	if(sizeof(buf) > 4) // 입력이 제대로 들어왔다면 버퍼를 비우기 위해서 \n을 한번 더 입력하지 않아도 됩니다.
 		while(getchar() != '\n') {getchar();}
@@ -119,7 +119,7 @@ void reg_name(INFO *myinfo)
 
 void reg_phone(INFO *myinfo)
 {
-	char buf[16];
+	char buf[16]; // 전화번호를 받을 공간을 줄입니다. 일반적인 전화번호는 buf 배열의 크기인 16을 넘지 않습니다.
 	memset(buf,0,16);
 	if(!chk_license())
 	{
@@ -129,11 +129,11 @@ void reg_phone(INFO *myinfo)
 		fflush(stdout);
 		fgets(buf,sizeof(buf) - 1,stdin); // 전화번호를 받을 공간을 256에서 buf 배열의 크기보다 하나 작은만큼 입력을 받게 15로 제한하는 것으로 수정합니다. 16이 아닌 이유는 string의 끝 부분을 알아야 해서 \n이 들어갈 공간을 남겼습니다.
 		buf[strlen(buf)] = '\x00'; //strlen(buf)-1 에서 수정하였습니다.
-		strncpy(myinfo->phone,buf,16);
+		strncpy(myinfo->phone,buf,16); // 문자열의 끝이 표기된 전체 buf를 전화번호로 전달합니다.
 		puts("Phone number Registration Complete!");
 		
 		while(getchar() != '\n') {getchar();}
-		// 입력버퍼를 완전히 비울때까지 반복합니다.
+		// 전화번호 입력 도중에 일어날 수 있는 쓰레기 값을 없애기 위하여 입력버퍼를 완전히 비울때까지 반복합니다.
 	}
 }
 
