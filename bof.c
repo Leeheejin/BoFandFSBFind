@@ -111,12 +111,11 @@ void reg_name(INFO *myinfo)
 		puts("What is your name?");
 		printf(">>> ");
 		fflush(stdout);
-		getchar();
 		scanf("%15s",myinfo->name); // 변환명세 변경을 통해 입력 최대 길이를 제한하여 버퍼오버플로우를 막습니다. %s -> %16s
+		while(getchar() != '\n') {getchar();}
 		printf("Hello %s\n",myinfo->name);
 	}
 }
-//입력 사이에 공백이 있을 경우 제대로 값을 받아들이지 못하고 버퍼오버플로우가 발생하여 phone number를 담을 공간과 address를 저장할 공간을 침범합니다.
 
 void reg_phone(INFO *myinfo)
 {
@@ -128,7 +127,6 @@ void reg_phone(INFO *myinfo)
 		puts("What is your phone number?");
 		printf(">>> ");
 		fflush(stdout);
-		getchar();
 		fgets(buf,sizeof(buf) - 1,stdin); // 전화번호를 받을 공간을 256에서 buf 배열의 크기보다 하나 작은만큼 입력을 받게 15로 제한하는 것으로 수정합니다. 16이 아닌 이유는 string의 끝 부분을 알아야 해서 \n이 들어갈 공간을 남겼습니다.
 		buf[strlen(buf)] = '\x00'; //strlen(buf)-1 에서 수정하였습니다.
 		strncpy(myinfo->phone,buf,16);
@@ -147,7 +145,6 @@ void reg_address(INFO *myinfo)
 		puts("What is your address?");
 		printf(">>> ");
 		fflush(stdout);
-		getchar();
 		read(0,myinfo->address,MAXBUF-1);
 		// MAXBUF만큼의 데이터가 들어오는 것을 테스트하여 입력한 데이터가 손상하는 것을 발견하였습니다. 이에,
 		// 입력받을 공간의 크기를 MAXBUF의 크기보다 1바이트 작은 공간으로 할당하여 문자열의 끝을 알 수 있게 하였습니다. 
