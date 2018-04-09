@@ -150,7 +150,7 @@ void reg_address(INFO *myinfo)
 		getchar();
 		read(0,myinfo->address,MAXBUF-1);
 		// MAXBUF만큼의 데이터가 들어오는 것을 테스트하여 입력한 데이터가 손상하는 것을 발견하였습니다. 이에,
-		// 입력받을 공간의 크기를 MAXBUF의 크기보다 1바이트 작은 공같으로 할당하여 문자열의 끝을 알 수 있게 하였습니다. 
+		// 입력받을 공간의 크기를 MAXBUF의 크기보다 1바이트 작은 공간으로 할당하여 문자열의 끝을 알 수 있게 하였습니다. 
 		puts("Address Registration Complete!");
 	}
 }
