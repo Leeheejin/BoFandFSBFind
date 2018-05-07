@@ -1,10 +1,4 @@
-/*
-	homework 1 : BoF
-	This program has several BoF vulnerabilities.
-	Find and fix them.
-	You can do anything(change functions, include extra headers, ...) to fix this program,
-	but it MUST work properly.
-*/
+/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
